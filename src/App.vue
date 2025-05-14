@@ -123,7 +123,7 @@ function scrollToTop() {
 <!-- Кнопка "Наверх" с изображением -->
 <div class="scroll-to-top" @click="scrollToTop">
   <img 
-    :src="isHovered ? '/igm/кнопка.png' : '/igm/кнопка2.png'" 
+    :src="isHovered ? './igm/кнопка.png' : './igm/кнопка2.png'" 
     alt="Наверх" 
     class="scroll-img"
     @mouseover="isHovered = true"

@@ -7,9 +7,9 @@ const searchQuery = ref('')
 const sortBy = ref('noSort')
 
 const artists = ref([
-  { alias: 'ArtByIvan', name: 'Иван Иванов', avatar: '/images/avatar1.png', createdAt: '2021-03-01', paintingsCount: 5 },
-  { alias: 'Petroff', name: 'Петр Петров', avatar: '/images/avatar2.png', createdAt: '2024-02-15', paintingsCount: 3 },
-  { alias: 'AlexeyArt', name: 'Алексей Алексеев', avatar: '/images/avatar3.png', createdAt: '2024-04-10', paintingsCount: 7 },
+  { alias: 'ArtByIvan', name: 'Иван Иванов', avatar: './images/avatar1.png', createdAt: '2021-03-01', paintingsCount: 5 },
+  { alias: 'Petroff', name: 'Петр Петров', avatar: './images/avatar2.png', createdAt: '2024-02-15', paintingsCount: 3 },
+  { alias: 'AlexeyArt', name: 'Алексей Алексеев', avatar: './images/avatar3.png', createdAt: '2024-04-10', paintingsCount: 7 },
 ])
 
 // Состояние для открытия модального окна

@@ -11,13 +11,13 @@ const priceRange = ref([0, 100000])
 const sortBy = ref('noSort')
 
 const paintings = ref([
-  { title: 'Картина 1', createdAt: '2024-05-01', price: 5000, artist: 'Иван Иванов', size: '20x20', imageUrl: '/art/art_1.png', inStock: true, isDiscounted: false },
-  { title: 'Картина 2', createdAt: '2024-05-04', price: 3750, oldPrice: 5000, artist: 'Петр Петров', size: '20x20', imageUrl: '/art/art_2.png', inStock: true, isDiscounted: true },
-  { title: 'Картина 3', createdAt: '2024-05-06', price: 10000, artist: 'Алексей Алексеев', size: '20x20', imageUrl: '/art/art_3.png', inStock: true, isDiscounted: false },
-  { title: 'Картина 4', createdAt: '2024-05-07', price: 10000, artist: 'Алексей Алексеев', size: '20x20', imageUrl: '/art/art_4.png', inStock: true, isDiscounted: false },
-  { title: 'Картина 5', createdAt: '2024-05-02', price: 10000, artist: 'Алексей Алексеев', size: '20x20', imageUrl: '/art/art_5.png', inStock: false, isDiscounted: false },
-  { title: 'Картина 6', createdAt: '2024-05-03', price: 8700, oldPrice: 11600, artist: '*Неизвестно*', size: '20x20', imageUrl: '/art/art_6.png', inStock: true, isDiscounted: true },
-  { title: 'Картина 7', createdAt: '2024-05-05', price: 9500, artist: '*Неизвестно*', size: '20x20', imageUrl: '/art/art_7.png', inStock: false, isDiscounted: false },
+  { title: 'Картина 1', createdAt: '2024-05-01', price: 5000, artist: 'Иван Иванов', size: '20x20', imageUrl: './art/art_1.png', inStock: true, isDiscounted: false },
+  { title: 'Картина 2', createdAt: '2024-05-04', price: 3750, oldPrice: 5000, artist: 'Петр Петров', size: '20x20', imageUrl: './art/art_2.png', inStock: true, isDiscounted: true },
+  { title: 'Картина 3', createdAt: '2024-05-06', price: 10000, artist: 'Алексей Алексеев', size: '20x20', imageUrl: './art/art_3.png', inStock: true, isDiscounted: false },
+  { title: 'Картина 4', createdAt: '2024-05-07', price: 10000, artist: 'Алексей Алексеев', size: '20x20', imageUrl: './art/art_4.png', inStock: true, isDiscounted: false },
+  { title: 'Картина 5', createdAt: '2024-05-02', price: 10000, artist: 'Алексей Алексеев', size: '20x20', imageUrl: './art/art_5.png', inStock: false, isDiscounted: false },
+  { title: 'Картина 6', createdAt: '2024-05-03', price: 8700, oldPrice: 11600, artist: '*Неизвестно*', size: '20x20', imageUrl: './art/art_6.png', inStock: true, isDiscounted: true },
+  { title: 'Картина 7', createdAt: '2024-05-05', price: 9500, artist: '*Неизвестно*', size: '20x20', imageUrl: './art/art_7.png', inStock: false, isDiscounted: false },
 ])
 
 const addedToFavorites = ref(JSON.parse(localStorage.getItem('favorites')) || [])
@@ -119,16 +119,16 @@ function clearFilters() {
         <div class="sort-buttons">
           <button 
             :class="{ active: sortBy === 'newest' }" 
-            @click="handleSort('newest')">🆕 По новизне</button>
+            @click="handleSort('newest')"> По новизне</button>
           <button 
             :class="{ active: sortBy === 'alphabetical' }" 
-            @click="handleSort('alphabetical')">🔤 По названию (А–Я)</button>
+            @click="handleSort('alphabetical')"> По названию (А–Я)</button>
           <button 
             :class="{ active: sortBy === 'priceAsc' }" 
-            @click="handleSort('priceAsc')">💸 По цене (возрастание)</button>
+            @click="handleSort('priceAsc')"> По цене (возрастание)</button>
           <button 
             :class="{ active: sortBy === 'priceDesc' }" 
-            @click="handleSort('priceDesc')">💸 По цене (убывание)</button>
+            @click="handleSort('priceDesc')"> По цене (убывание)</button>
           <button 
             :class="{ active: sortBy === 'noSort' }" 
             @click="handleSort('noSort')">Без сортировки</button>
@@ -211,8 +211,8 @@ function clearFilters() {
           <button @click="toggleFavorite(painting)" class="btn_heart">
             <img 
               :src="isFavorite(painting) 
-                ? '/igm/кнопка_сердце2.png' 
-                : '/igm/кнопка_сердце1.png'" 
+                ? './igm/кнопка_сердце2.png' 
+                : './igm/кнопка_сердце1.png'" 
               alt="ikon" 
               class="heart-icon"
             />
