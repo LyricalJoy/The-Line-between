@@ -182,7 +182,7 @@ localStorage.setItem('cart', JSON.stringify([]))
     <div v-if="cartItems.length > 0" class="summary">
       <p>Количество товаров: {{ cartItems.length }} шт.</p>
       <p>Сумма заказа: {{ totalPrice }}₽</p>
-      <button class="btn_checkout" @click="showModal = true">Оформить заказ</button>
+      <button class="btn_pay" @click="showModal = true">Оформить заказ</button>
     </div>
 
 
@@ -227,7 +227,7 @@ localStorage.setItem('cart', JSON.stringify([]))
             Согласен на обработку персональных данных
             <span v-if="errors.agree" class="error">{{ errors.agree }}</span>
           </label>
-          <button type="submit" :disabled="!agree ">
+          <button type="submit" :disabled="!agree " class="btn">
             Оформить заказ
           </button>
         </form>
@@ -252,6 +252,27 @@ localStorage.setItem('cart', JSON.stringify([]))
 
 <style scoped>
 
+.btn_pay:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn_pay {
+  font-size: 20px;
+  color: rgba(68, 107, 186, 1);
+  margin-top: 10px;
+  padding: 10px 24px;
+  background-color: #ffffff;
+  border: 4px solid rgba(68, 107, 186, 1);
+  cursor: pointer;
+  transition: color 1s,  background-color 0.5s;
+}
+
+.btn_pay:hover {
+  color: white;
+  background-color: rgba(68, 107, 186, 1);
+}
+
 .success-content {
   text-align: center;
   padding: 20px;
@@ -273,7 +294,9 @@ localStorage.setItem('cart', JSON.stringify([]))
 }
 
 
-
+p {
+  font-size: 24px;
+}
 form {
   display: flex;
   flex-direction: column;
@@ -388,60 +411,28 @@ button[type="submit"]:disabled {
   margin-top: 10px;
 }
 
+.btn_remove-fav:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .btn_remove-fav {
-  background-color: red;
-  color: white;
-  padding: 10px;
-  border: none;
+  font-size: 20px;
+  color: rgb(191, 42, 31);
+  margin-top: 10px;
+  padding: 10px 24px;
+  background-color: #ffffff;
+  border: 4px solid rgb(185, 22, 22);
   cursor: pointer;
+  transition: color 1s,  background-color 0.5s;
 }
 
-.btn_pay {
-  background-color: green;
+.btn_remove-fav:hover {
   color: white;
-  padding: 10px;
-  border: none;
-  cursor: pointer;
+  background-color: rgb(186, 68, 68);
 }
 
-.btn_checkout {
-  background-color: green;
-  color: white;
-  padding: 15px;
-  border: none;
-  cursor: pointer;
-}
 
-/* Стили для формы доставки */
-.order-form {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-}
 
-.order-form label {
-  display: block;
-  margin-bottom: 10px;
-}
 
-.order-form input {
-  width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-}
-
-.order-form button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-.order-form button:disabled {
-  background-color: #ccc;
-}
 </style>

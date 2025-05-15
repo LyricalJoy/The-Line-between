@@ -35,16 +35,18 @@ const props = defineProps({
           <h3>Представленные работы для продажи:</h3>
           <div class="paintings-list">
             <div class="painting-card">
-              <img src="/art/art_5.png" alt="Painting 1" class="painting-image" />
-              <p>Картина 1</p>
+              <img src="/art/art_29.png" alt="Painting 1" class="painting-image" />
+              <p>Мико</p>
             </div>
             <div class="painting-card">
-              <img src="/art/art_6.png" alt="Painting 2" class="painting-image" />
-              <p>Картина 2</p>
+              <img src="/art/art_36.png" alt="Painting 2" class="painting-image" />
+              <p>
+                Рыцарь
+              </p>
             </div>
             <div class="painting-card">
-              <img src="/art/art_7.png" alt="Painting 3" class="painting-image" />
-              <p>Картина 3</p>
+              <img src="/art/art_23.png" alt="Painting 3" class="painting-image" />
+              <p>В горах</p>
             </div>
           </div>
         </div>

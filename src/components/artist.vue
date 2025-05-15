@@ -7,9 +7,9 @@ const searchQuery = ref('')
 const sortBy = ref('noSort')
 
 const artists = ref([
-  { alias: 'ArtByIvan', name: 'Иван Иванов', avatar: './images/avatar1.png', createdAt: '2021-03-01', paintingsCount: 5 },
-  { alias: 'Petroff', name: 'Петр Петров', avatar: './images/avatar2.png', createdAt: '2024-02-15', paintingsCount: 3 },
-  { alias: 'AlexeyArt', name: 'Алексей Алексеев', avatar: './images/avatar3.png', createdAt: '2024-04-10', paintingsCount: 7 },
+  { alias: 'Shuploc', name: 'Julie', avatar: './igm/artist_1.png', createdAt: '2021-03-01', paintingsCount: 22 },
+  { alias: 'anna.lebedeva', name: 'Анна Лебедева', avatar: './igm/artist_2.png', createdAt: '2024-02-15', paintingsCount: 5 },
+  { alias: 'Jayce', name: 'Kevin Alejandro', avatar: './igm/artist_3.png', createdAt: '2024-04-10', paintingsCount: 7 },
 ])
 
 // Состояние для открытия модального окна
@@ -105,15 +105,28 @@ function closeArtistModal() {
 }
 
 .search-bar {
+  margin-left: 35%;
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  max-width: 600px;
   margin-bottom: 20px;
 }
 
 .search-input {
+  flex: 1;
   padding: 10px;
-  width: 100%;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s;
 }
+
+.search-input:focus {
+  border-color: #f4db9a;
+}
+
 
 .sort-section {
   margin-bottom: 30px;
@@ -139,8 +152,9 @@ function closeArtistModal() {
 }
 
 .artist-card {
+  background-color: #cde6ff;
   padding: 20px;
-  border: 1px solid #ccc;
+  border: 3px solid rgba(239, 209, 136, 1);
   border-radius: 10px;
   text-align: center;
   cursor: pointer;

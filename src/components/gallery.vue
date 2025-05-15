@@ -11,13 +11,31 @@ const priceRange = ref([0, 100000])
 const sortBy = ref('noSort')
 
 const paintings = ref([
-  { title: 'Картина 1', createdAt: '2024-05-01', price: 5000, artist: 'Иван Иванов', size: '20x20', imageUrl: './art/art_1.png', inStock: true, isDiscounted: false },
-  { title: 'Картина 2', createdAt: '2024-05-04', price: 3750, oldPrice: 5000, artist: 'Петр Петров', size: '20x20', imageUrl: './art/art_2.png', inStock: true, isDiscounted: true },
-  { title: 'Картина 3', createdAt: '2024-05-06', price: 10000, artist: 'Алексей Алексеев', size: '20x20', imageUrl: './art/art_3.png', inStock: true, isDiscounted: false },
-  { title: 'Картина 4', createdAt: '2024-05-07', price: 10000, artist: 'Алексей Алексеев', size: '20x20', imageUrl: './art/art_4.png', inStock: true, isDiscounted: false },
-  { title: 'Картина 5', createdAt: '2024-05-02', price: 10000, artist: 'Алексей Алексеев', size: '20x20', imageUrl: './art/art_5.png', inStock: false, isDiscounted: false },
-  { title: 'Картина 6', createdAt: '2024-05-03', price: 8700, oldPrice: 11600, artist: '*Неизвестно*', size: '20x20', imageUrl: './art/art_6.png', inStock: true, isDiscounted: true },
-  { title: 'Картина 7', createdAt: '2024-05-05', price: 9500, artist: '*Неизвестно*', size: '20x20', imageUrl: './art/art_7.png', inStock: false, isDiscounted: false },
+  { title: 'Астарион', createdAt: '2024-05-01', price: 50000, artist: 'Иван Иванов', size: '20x20', imageUrl: './art/art_9.png', inStock: true, isDiscounted: false },
+  { title: 'Paradize one', createdAt: '2024-05-04', price: 3750, oldPrice: 5000, artist: 'Петр Петров', size: '20x20', imageUrl: './art/art_14.png', inStock: true, isDiscounted: true },
+  { title: 'Виктор', createdAt: '2024-05-06', price: 10000, artist: 'Алексей Алексеев', size: '20x20', imageUrl: './art/art_15.png', inStock: true, isDiscounted: false },
+  { title: 'ДаньХэ', createdAt: '2024-05-07', price: 10000, artist: 'Алексей Алексеев', size: '20x20', imageUrl: './art/art_26.png', inStock: true, isDiscounted: false },
+  { title: 'Джейс', createdAt: '2024-05-01', price: 5000, artist: 'Иван Иванов', size: '20x20', imageUrl: './art/art_37.png', inStock: true, isDiscounted: false },
+  { title: 'Картина 5', createdAt: '2024-05-02', price: 10000, artist: 'Алексей Алексеев', size: '20x20', imageUrl: './art/art_12.png', inStock: true, isDiscounted: false },
+  { title: 'Картина 6', createdAt: '2024-05-03', price: 87000, oldPrice: 11600, artist: '*Неизвестно*', size: '20x20', imageUrl: './art/art_27.png', inStock: true, isDiscounted: true },
+  { title: 'Картина 7', createdAt: '2024-05-05', price: 9500, artist: '*Неизвестно*', size: '20x20', imageUrl: './art/art_30.png', inStock: true, isDiscounted: false },
+  { title: 'Картина 8', createdAt: '2024-05-02', price: 10000, artist: 'Алексей Алексеев', size: '20x20', imageUrl: './art/art_31.png', inStock: true, isDiscounted: false },
+  { title: 'Картина 9', createdAt: '2024-05-02', price: 10000, artist: 'Алексей Алексеев', size: '20x20', imageUrl: './art/art_35.png', inStock: false, isDiscounted: false },
+  { title: 'Картина 10', createdAt: '2024-05-01', price: 5000, artist: 'Иван Иванов', size: '20x20', imageUrl: './art/art_23.png', inStock: true, isDiscounted: false },
+  { title: 'Картина 11', createdAt: '2024-05-01', price: 50000, artist: 'Иван Иванов', size: '20x20', imageUrl: './art/art_19.png', inStock: false, isDiscounted: false },
+  { title: 'Картина 12', createdAt: '2024-05-01', price: 5000, artist: 'Иван Иванов', size: '20x20', imageUrl: './art/art_1.png', inStock: true, isDiscounted: false },
+  { title: 'Картина 13', createdAt: '2024-05-01', price: 5000, artist: 'Иван Иванов', size: '20x20', imageUrl: './art/art_17.png', inStock: true, isDiscounted: false },
+  { title: 'Картина 14', createdAt: '2024-05-01', price: 5000, artist: 'Иван Иванов', size: '20x20', imageUrl: './art/art_5.png', inStock: true, isDiscounted: false },
+  { title: 'Картина 15', createdAt: '2024-05-01', price: 5000, artist: 'Иван Иванов', size: '20x20', imageUrl: './art/art_21.png', inStock: true, isDiscounted: false },
+  { title: 'Картина 16', createdAt: '2024-05-01', price: 5000, artist: 'Иван Иванов', size: '20x20', imageUrl: './art/art_25.png', inStock: false, isDiscounted: false },
+  { title: 'Картина 17', createdAt: '2024-05-01', price: 50000, artist: 'Иван Иванов', size: '20x20', imageUrl: './art/art_29.png', inStock: true, isDiscounted: false },
+  { title: 'Картина 18', createdAt: '2024-05-01', price: 5000, artist: 'Иван Иванов', size: '20x20', imageUrl: './art/art_34.png', inStock: true, isDiscounted: false },
+  { title: 'Картина 19', createdAt: '2024-05-01', price: 5000, artist: 'Иван Иванов', size: '20x20', imageUrl: './art/art_36.png', inStock: true, isDiscounted: false },
+  { title: 'Картина 20', createdAt: '2024-05-01', price: 5000, artist: 'Иван Иванов', size: '20x20', imageUrl: './art/art_33.png', inStock: true, isDiscounted: false },
+  { title: 'Картина 21', createdAt: '2024-05-01', price: 50000, artist: 'Иван Иванов', size: '20x20', imageUrl: './art/art_28.png', inStock: true, isDiscounted: false },
+  { title: 'Картина 22', createdAt: '2024-05-01', price: 5000, artist: 'Иван Иванов', size: '20x20', imageUrl: './art/art_11.png', inStock: true, isDiscounted: false },
+  { title: 'Картина 23', createdAt: '2024-05-01', price: 5000, artist: 'Иван Иванов', size: '20x20', imageUrl: './art/art_13.png', inStock: true, isDiscounted: false },
+  { title: 'Картина 24', createdAt: '2024-05-01', price: 5000, artist: 'Иван Иванов', size: '20x20', imageUrl: './art/art_6.png', inStock: true, isDiscounted: false },
 ])
 
 const addedToFavorites = ref(JSON.parse(localStorage.getItem('favorites')) || [])
@@ -145,7 +163,7 @@ function clearFilters() {
             <VueSlider 
               v-model="priceRange" 
               :min="0" 
-              :max="500000" 
+              :max="50000" 
               :tooltip="'always'" 
               :interval="100" 
               class="slider"
@@ -358,8 +376,17 @@ function clearFilters() {
 .art-image {
   width: 100%;
   height: auto;
+  position: relative; /* чтобы z-index работал */
+  z-index: 1;
+  transition: transform 1s ease;
 }
 
+.art-image:hover {
+  transform: scale(1.7);
+  z-index: 10; /* Повышаем слой, чтобы картинка была сверху */
+  transition: transform 1s ease, z-index 0s;
+
+}
 .art-card h3 {
   font-size: 24px;
   margin: 5px 0;

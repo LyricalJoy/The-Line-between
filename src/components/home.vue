@@ -4,14 +4,77 @@ import { ref, onMounted } from 'vue'
 const emit = defineEmits(['change-page'])
 
 const images = ref([
-'./art/art_4.png',
-'./art/art_5.png',
-'./art/art_6.png',
+'./igm/banner_1.png',
+'./igm/banner_2.png',
+'./igm/banner_3.png',
+'./igm/banner_4.png',
+'./igm/banner_5.png',
+'./igm/banner_6.png',
+'./igm/banner_7.png',
 ])
+
+const featuredArtists = [
+  {
+    avatar: './igm/artist_2.png',
+    name: 'Анна Лебедева',
+    nickname: 'anna.lebedeva'
+  },
+  {
+    avatar: './igm/artist_1.png',
+    name: 'Julie',
+    nickname: 'Shuploc'
+  },
+  {
+    avatar: './igm/artist_3.png',
+    name: 'Kevin Alejandro',
+    nickname: 'Jayce'
+  }
+]
+
+const bestArtworks = [
+  {
+    image: './art/art_8.png',
+    title: 'Shimmer',
+    artist: 'Jayce'
+  },
+  {
+    image: './art/art_9.png',
+    title: 'Astarion',
+    artist: 'Shuploc'
+  },
+  {
+    image: './art/art_10.png',
+    title: 'Victor',
+    artist: 'Shuploc'
+  }
+]
 
 // Текущий слайд и направление анимации
 const currentSlide = ref(0)
-const direction = ref('next')
+
+const workSteps = [
+  {
+    icon: './igm/banner_8.png',
+    title: 'Отбор художников',
+    text: 'Художники сами выходят на нас — ведь мы завоевали доверие как честная и уважаемая платформа. Наш арт-координатор назначает встречу, проводит переговоры и заключает договор.'
+  },
+  {
+    icon: './igm/banner_9.png',
+    title: 'Размещение на сайте',
+    text: 'Наш IT-специалист вручную добавляет каждую картину после модерации и одобрения.'
+  },
+  {
+    icon: './igm/banner_10.png',
+    title: 'Оформление и доставка',
+    text: 'Покупатель оформляет заказ, и мы организуем бережную доставку прямо в руки.'
+  },
+  {
+    icon: './igm/banner_11.png',
+    title: 'Расчёт с художником',
+    text: 'Художник получает оплату за вычетом нашей комиссии. Прозрачно и честно.'
+  }
+]
+
 
 
 function nextSlide() {
@@ -44,7 +107,7 @@ const reviews = [
     avatar: './igm/oto_1.png',
     text: '«Очень доволен покупкой! Картина превзошла ожидания — вживую цвета ещё глубже. Заказ оформил за пару минут, доставка была аккуратной и точно в срок.»',
     author: 'Гарри Ллойд',
-    stars: 3
+    stars: 5
   },
   {
     avatar: './igm/oto_3.png',
@@ -56,7 +119,7 @@ const reviews = [
     avatar: './igm/oto_2.png',
     text: '«Приятно удивлен качеством упаковки и скоростью доставки. Сайт вдохновляет, хочется возвращаться за новыми работами!»',
     author: 'Детка Безмонетки',
-    stars: 5
+    stars: 6
   }
 ]
 
@@ -91,19 +154,14 @@ function goToCatalog() {
   emit('change-page', 2)
 }
 
-// Автосмена слайдов (можно изменить интервал здесь ↓)
-function startSlider() {
-  setInterval(() => {
-    nextSlide()
-  }, 5000) // <--- Интервал автосмены: 5000 мс = 5 секунд
-}
-
 </script>
 
 <template>
   <div class="home-page">
+  <div class="body">
     <div class="hero">
       <h1 class="site-title">THE LINE BETWEEN</h1>
+      
       <p class="site-subtitle">
         Галерея, где тонкая грань между творчеством и восприятием превращается в живой диалог.
       </p>
@@ -122,12 +180,13 @@ function startSlider() {
 
       <!-- Точки -->
       <div class="dots">
-        <span
-          v-for="(img, index) in images"
-          :key="'dot-' + index"
-          :class="{ dot: true, active: index === currentSlide }"
-          @click="goToSlide(index)"
-        ></span>
+        <button
+    v-for="(img, index) in images"
+    :key="'dot-' + index"
+    :class="{ dot: true, active: index === currentSlide }"
+    @click="goToSlide(index)"
+    aria-label="'Перейти к слайду ' + (index + 1)"
+  ></button>
       </div>
     </div>
 
@@ -150,25 +209,44 @@ function startSlider() {
       </p>
     </section>
 
+            <section class="how-we-work">
+          <h2>Как мы работаем</h2>
+          <p class="intro">
+            Мы выстраиваем прозрачный процесс между художником и покупателем — от идеи до доставки.
+          </p>
+          <div class="work-card-grid">
+            <div class="work-card" v-for="(step, index) in workSteps" :key="'step' + index">
+              <img :src="step.icon" :alt="step.title" class="work-icon" />
+              <h3>{{ step.title }}</h3>
+              <p>{{ step.text }}</p>
+            </div>
+          </div>
+        </section>
+
+
+
+
         <!-- Лучшие работы месяца -->
-    <section class="highlighted-art">
-      <h2>Лучшие работы месяца</h2>
-      <div class="art-grid">
-        <div class="art-item" v-for="n in 3" :key="'art' + n">
-          <img :src="'/igm/art' + n + '.jpg'" alt="Картина" />
-          <p>Название картины {{ n }}</p>
-        </div>
-      </div>
-      <button class="catalog-button" @click="goToCatalog">Перейти в каталог</button>
-    </section>
+        <section class="highlighted-art">
+          <h2>Лучшие работы месяца</h2>
+          <div class="art-grid">
+            <div class="art-item" v-for="(art, index) in bestArtworks" :key="'art' + index">
+              <img :src="art.image" alt="Картина" class="art-image" />
+              <p class="art-title">{{ art.title }}</p>
+              <p class="art-artist">Автор: {{ art.artist }}</p>
+            </div>
+          </div>
+          <button class="catalog-button" @click="goToCatalog">Перейти в каталог</button>
+        </section>
 
     <!-- Избранные художники -->
     <section class="featured-artists">
       <h2>Избранные художники</h2>
       <div class="artist-grid">
-        <div class="artist-card" v-for="n in 3" :key="'artist' + n">
-          <img :src="'/igm/artist' + n + '.jpg'" alt="Художник" />
-          <p>Имя художника {{ n }}</p>
+        <div class="artist-card" v-for="(artist, index) in featuredArtists" :key="'artist' + index">
+          <img :src="artist.avatar" alt="Аватар художника" class="artist-avatar" />
+          <p class="artist-name">{{ artist.name }}</p>
+          <p class="artist-nick">@{{ artist.nickname }}</p>
         </div>
       </div>
     </section>
@@ -191,7 +269,7 @@ function startSlider() {
     </div>
     <div class="step">
       <span>4</span>
-      <p>Оплатите картину удобным способом прямо на сайте.</p>
+      <p>Оплатите картину удобным вам способом.</p>
     </div>
     <div class="step">
       <span>5</span>
@@ -254,47 +332,68 @@ function startSlider() {
   </div>
 </transition>
 </section>
-
+  </div>
 </div>
 </template>
 
 <style scoped>
 
-.quote-block {
+.how-we-work {
+  padding: 60px 20px;
   text-align: center;
-  font-style: italic;
-  font-size: 22px;
-  margin: 60px auto 40px;
-  color: #333;
+}
+
+.how-we-work h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.how-we-work .intro {
   max-width: 700px;
+  margin: 0 auto 40px;
+  font-size: 16px;
+  color: #555;
 }
 
-.style-select {
-  text-align: center;
-  margin: 60px auto;
-}
-
-.style-buttons {
+.work-card-grid {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
-  gap: 15px;
-  margin-top: 20px;
+  justify-content: center;
+  gap: 30px;
 }
 
-.style-buttons button {
-  padding: 10px 20px;
-  background-color: #f4db9a;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: 0.3s;
+.work-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 250px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.style-buttons button:hover {
-  background-color: #e2c97e;
+.work-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
 }
+
+.work-icon {
+  width: 250px;
+  margin-bottom: 15px;
+}
+
+.work-card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #8b4513;
+}
+
+.work-card p {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.5;
+}
+
+
 
 .highlighted-art,
 .featured-artists,
@@ -327,11 +426,71 @@ function startSlider() {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
-.art-item img,
-.artist-card img {
+.artist-grid {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.artist-card {
+  text-align: center;
+  max-width: 200px;
+}
+
+.artist-avatar {
   width: 100%;
-  border-radius: 8px;
+  max-width: 160px;
+  height: 160px;
+  border-radius: 50%;
   object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.artist-name {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.artist-nick {
+  color: #888;
+  font-size: 14px;
+}
+
+.art-grid {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.art-item:hover,
+.artist-card:hover {
+  transition: transform 1.0s ease;
+  transform: scale(1.15);
+}
+.art-item {
+  background-color: white;
+  max-width: 450px;
+  text-align: center;
+}
+
+.art-image {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.art-title {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.art-artist {
+  color: #666;
+  font-size: 14px;
 }
 
 .review {
@@ -358,10 +517,12 @@ function startSlider() {
 .step {
   text-align: center;
   max-width: 220px;
-  background-color: #fff4e5;
+  background-color: rgb(255, 255, 255);
   padding: 20px;
+  border: 2px solid;
+  border-color: lightskyblue;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
 }
 
 .step span {
@@ -392,7 +553,8 @@ function startSlider() {
   display: flex;
   align-items: center;
   gap: 15px;
-  background-color: #ffffff;
+  border: 2px solid;
+  border-color: rgba(242, 205, 138, 1);
   border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   padding: 20px;
@@ -435,15 +597,6 @@ function startSlider() {
   margin-right: 2px;
 }
 
-.slider {
-  position: relative;
-  width: 100%;
-  max-width: 800px;
-  height: 400px;
-  overflow: hidden;
-  margin: 0 auto;
-  border-radius: 12px;
-}
 
 .slider-track {
   display: flex;
@@ -452,10 +605,12 @@ function startSlider() {
   transition: transform 0.8s ease; /* мягкая анимация */
 }
 
+
 .slide {
   min-width: 100%;
   height: 100%;
 }
+
 
 .slide img {
   width: 100%;
@@ -493,23 +648,29 @@ function startSlider() {
 
 /* Точки */
 .dots {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
-  justify-content: center;
-  margin-top: 12px;
+  gap: 12px;
+  z-index: 10;
 }
 
 .dot {
-  width: 12px;
-  height: 12px;
-  background: #ccc;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
-  margin: 0 5px;
+  border: 2px solid #fff;
+  background-color: rgba(255, 255, 255, 0.5);
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  padding: 0;
 }
 
 .dot.active {
-  background-color: #111;
+  background-color: #ffb24e; 
+  transform: scale(1.2);
 }
 .success-message {
   margin-top: 15px;
@@ -523,16 +684,11 @@ function startSlider() {
 }
 
 /* Анимация появления */
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 0.4s ease;
-}
-.fade-enter-from, .fade-leave-to {
-  opacity: 0;
-}
+
 .home-page {
   padding: 40px 20px;
   text-align: center;
-  background-color: #f9f9f9;
+  background-color: #ffffff;
 }
 
 .hero {
@@ -576,21 +732,13 @@ function startSlider() {
 .slider {
   position: relative;
   width: 100%;
-  max-width: 700px;
-  height: 400px;
+  max-width: 800px;
+  height: 500px;
   margin: 0 auto 20px;
   overflow: hidden;
   border-radius: 12px;
 }
 
-.slider-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
 
 /* Кнопки */
 .slider-button {
@@ -608,6 +756,9 @@ function startSlider() {
   transition: background-color 0.3s ease;
 }
 
+p {
+  font-size: 20px;
+}
 .slider-button:hover {
   background: rgba(0, 0, 0, 0.7);
 }
@@ -618,56 +769,6 @@ function startSlider() {
 
 .slider-button.right {
   right: 10px;
-}
-
-/* Точки (dots) */
-.dots {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-}
-
-.dot {
-  width: 12px;
-  height: 12px;
-  margin: 0 5px;
-  background-color: #ccc;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.dot.active {
-  background-color: #111;
-}
-
-/* Анимация — смещение */
-.slide-left-enter-active,
-.slide-right-enter-active,
-.slide-left-leave-active,
-.slide-right-leave-active {
-  transition: transform 0.5s ease, opacity 0.5s ease;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
-.slide-left-enter-from {
-  transform: translateX(100%);
-  opacity: 0;
-}
-.slide-left-leave-to {
-  transform: translateX(-100%);
-  opacity: 0;
-}
-
-.slide-right-enter-from {
-  transform: translateX(-100%);
-  opacity: 0;
-}
-.slide-right-leave-to {
-  transform: translateX(100%);
-  opacity: 0;
 }
 
 /* О нас */
@@ -698,7 +799,7 @@ h2 {
   margin-bottom: 20px;
   line-height: 1.7;
   color: #2a2a2a;
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .subscribe {
@@ -706,7 +807,9 @@ h2 {
   margin: 60px auto 40px;
   text-align: left;
   padding: 30px;
-  background-color: #fff;
+  border: 3px solid;
+  border-color: rgb(255, 188, 65);
+  background-color: rgba(242, 205, 138, 1);
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }

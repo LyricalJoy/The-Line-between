@@ -124,20 +124,31 @@ function logout() {
 .account {
   max-width: 600px;
   margin: 0 auto;
-  padding: 20px;
-  font-family: Arial, sans-serif;
+  padding: 30px 20px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  font-family: 'Segoe UI', sans-serif;
 }
 
 h1 {
   text-align: center;
-  font-size: 24px;
-  margin-bottom: 20px;
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #8b4513;
+}
+
+p {
+  text-align: center;
+  font-size: 15px;
+  color: #444;
+  margin-bottom: 25px;
 }
 
 .form-container {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px;
 }
 
 .form-group {
@@ -146,57 +157,88 @@ h1 {
 }
 
 label {
-  font-size: 16px;
-  margin-bottom: 5px;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #333;
 }
 
 input, select {
-  padding: 8px;
+  padding: 10px;
   font-size: 14px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
+  border-radius: 8px;
+  border: 1px solid #d2b48c;
+  background-color: #ffffff;
+  transition: border-color 0.3s;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #caa84c;
 }
 
 .error {
-  color: red;
-  font-size: 12px;
+  color: #c0392b;
+  font-size: 13px;
   margin-top: 5px;
 }
 
 button {
-  padding: 10px;
+  padding: 12px 20px;
   font-size: 16px;
   cursor: pointer;
   border: none;
-  border-radius: 4px;
-  transition: background-color 0.3s;
-}
-
-button:hover {
-  background-color: #f0f0f0;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
 }
 
 .btn-register {
-  background-color: #4CAF50;
+  background-color: #caa84c;
   color: white;
+}
+
+.btn-register:hover {
+  background-color: #b08c30;
 }
 
 .btn-orders {
-  background-color: #2196F3;
+  background-color: #7caeff;
   color: white;
+  margin-right: 10px;
 }
 
+.btn-orders:hover {
+  background-color: #ffc73a;
+}
+
+p{
+  font-size: 24px;
+}
 .btn-logout {
-  background-color: #f44336;
+  background-color: #e74c3c;
   color: white;
+  margin-top: 10px;
+}
+
+.btn-logout:hover {
+  background-color: #c0392b;
 }
 
 .user-info {
   text-align: center;
 }
 
-.user-info p {
-  font-size: 18px;
-  margin: 10px 0;
+.user-info h2 {
+  font-size: 24px;
+  color: #8b4513;
+  margin-bottom: 15px;
 }
+
+.user-info p {
+  font-size: 16px;
+  margin: 8px 0;
+  color: #444;
+}
+
 </style>
