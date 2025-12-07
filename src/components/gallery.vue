@@ -263,7 +263,7 @@ function clearFilters() {
 
 .new-price {
   margin: 5px;
-  color: #ff6b49;
+  color: #2dc8f7;
   font-weight: bold;
   font-size: 26px;
 }
