@@ -213,9 +213,22 @@ function scrollToTop() {
 }
 
 .body {
-  max-width: 1920px;
-  margin: 0 auto; 
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+main {
+  flex: 1; /* Занимает все доступное пространство */
+}
+
+#app {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 .navbar {
   display: flex;
@@ -332,6 +345,7 @@ button:hover {
 }
 
 .site-footer {
+  flex-shrink: 0;
   border-top: 3px solid #ffdd89;
   background-color: #ffffff;
   color: #2e2e2e;
